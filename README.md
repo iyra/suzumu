@@ -15,6 +15,22 @@ Either load up the `game.rkt` file in DrRacket and hit "Run" or start up the gam
 
 Type 'h' and hit enter to see a list of options at any point in the game.
 
+## What doesn't work (yet)
+
+* When you load/save a player, the file is assumed to be in the directory where you're running racket or DrRacket from. It *should* save and load to/from `$HOME/suzumu/saves`.
+* When you save a set of scenes, the save location is assumed to be the directory where you're running racket or DrRacket from. It *should* save to `$HOME/suzumu/scenes`. However, all scene loading reads through files ending in .save in `$Home/suzumu/scenes` so loading is fine.
+
+## Making your own scenes
+
+* Modify/delete/add to/remove `scenesL` to your liking.
+* Make sure any lambdas you use are quoted, and remember that they are evaluated simply by calling `eval` on what you enter.
+* A `choice` `requirement` field **must** return either `#t` or `#f`.
+* A `choice` `action` filed **must** return a player struct.
+* A `scene` `pre-scene-action` field **must** return a player struct. `choices`
+* A `scene` `choices` field **must** be a list of choice structs
+* Uncomment the calls to `insert-scenes` and `launch-game` at the bottom of `game.rkt`. You don't want to load the game.
+* Call `(save-scenes scenesL "myScenes")` which will create (or **overwrite**) a file called "myScenes" in the current working directory. To load these scenes when you play the game, move or copy myScenes to `$HOME/suzumu/scenes`.
+
 ## License
 
     suzumu - A text adventure game in Racket.

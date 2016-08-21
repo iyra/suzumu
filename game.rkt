@@ -159,7 +159,7 @@
     (lambda () (deserialize (read)))))
 
 (define items
-  (hash "potion" (backpack-item "Some shitty potion"
+  (hash "potion" (backpack-item "Some potion"
                                 (λ (p)
                                   (player (player-name p)
                                           (+ 7 (player-hp p))
